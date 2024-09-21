@@ -1,0 +1,58 @@
+{% extends 'manager/manager_frame.html' %}
+
+{% block content %}
+  <div class="container">
+    <div style="margin-bottom: 10px;" class="clearfix">
+      <a href="/manager/teacher/add/" target="_blank" class="btn btn-success">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        <span>添加教师</span>
+    </a>
+    <div style="width:300px; float:right" >
+      <form method="get">
+          <div class="input-group">
+              <input type="text" name="q" class="form-control" placeholder="教师ID查找···" value="{{ search_data }}">
+              <span class="input-group-btn ">
+                  <button class="btn btn-default " type="submit" style="color: white;background-color: #c57340f0;" >搜索</button>
+              </span>
+          </div>
+      </form>
+  </div>
+    </div>
+    <div class="panel panel-warning">
+      <div class="panel-heading">▤ 教师列表</div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>教师ID</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>院系</th>
+            <th>级别</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for obj in obj_list %}
+            <tr>
+              <th scope="row">{{ obj.uid }}</th>
+              <td>{{ obj.name }}</td>
+              <td>{{ obj.get_gender_display }}</td>
+              <td>{{ obj.age }}</td>
+              <td>{{ obj.faculty }}</td>
+              <td>{{ obj.get_level_display }}</td>
+              <td>
+                <a href="/manager/teacher/{{ obj.uid }}/info/" class="btn btn-primary btn-xs">查看详情</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}
+
+{% comment %} {% block js %}
+  {% load static %}
+  <script src="{% static 'manager/js/teacher_add.js' %}"></script>
+{% endblock %} {% endcomment %}

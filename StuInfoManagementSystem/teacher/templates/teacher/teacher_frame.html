@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'manager/css/bootstrap.min.css' %}" />
+    {% block css %}{% endblock %}
+    <link rel="shortcut icon" href="{% static 'manager/images/index.ico' %}" type="image/x-icon" />
+    <style>
+        body {
+            /* background-image: url({% static 'manager/images/bg3.jpg' %}); */
+            background-size: cover;
+            background-color: #daf0f98c;
+        }
+    </style>
+    <title>学生信息管理系统</title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">学生信息管理系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="/teacher/index/">学生管理</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span style="color:red">欢迎你，</span>{{ request.session.info.username }}&nbsp;<span class="caret"></span>
+            </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="/teacher/info/">个人信息</a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <a href="#">关于</a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <a href="/manager/logout/">注销</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div style="height: 690px;">
+      {% block content %}
+
+      {% endblock %}
+      
+    </div>
+
+    <div class="text-center">
+      <p style="padding:15px 0;">版权信息：2024 ©学生信息管理平台<br>备案号：豫ICP备1001234846号</p>
+    </div>
+
+    <script src="{% static 'manager/js/jquery.min.js' %}"></script>
+    <script src="{% static 'manager/js/bootstrap.min.js' %}"></script>
+    {% block js %}{% endblock %}
+  </body>
+</html>

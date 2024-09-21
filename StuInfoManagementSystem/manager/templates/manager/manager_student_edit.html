@@ -1,0 +1,27 @@
+{% extends 'manager/manager_frame.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <label class="panel-title">编辑学生信息</label>
+      </div>
+      <div class="panel-body">
+        <form class="row" method="post" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+
+          {% for item in form %}
+            <div class="col-sm-6">
+              {{ item.label }} : {{ item }}
+              <span style="color: red;">{{ item.errors.0 }}</span>
+              <br />
+            </div>
+          {% endfor %}
+
+          <a href="/manager/student/index/" style="margin-left: 200px;" class="btn btn-success">取 消</a>&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;
+          <button type="submit" style="margin-left: 0px;" class="btn btn-primary">提 交</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

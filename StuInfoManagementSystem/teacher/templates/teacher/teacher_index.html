@@ -1,0 +1,53 @@
+{% extends 'teacher/teacher_frame.html' %}
+
+{% block content %}
+  <div class="container">
+    <div style="margin-bottom: 10px;" class="clearfix">
+      <a href="/teacher/student/add/" target="_blank" class="btn btn-success">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        <span>添加学生</span>
+    </a>
+    <div style="width:300px; float:right" >
+      <form method="get">
+          <div class="input-group">
+              <input type="text" name="q" class="form-control" placeholder="学号查找···" value="{{ search_data }}">
+              <span class="input-group-btn ">
+                  <button class="btn btn-default " type="submit" style="color: white;background-color: #888;" >搜索</button>
+              </span>
+          </div>
+      </form>
+  </div>
+    </div>
+    <div class="panel panel-warning">
+      <div class="panel-heading">▤ 学生列表</div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>院系</th>
+            <th>年级</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for obj in obj_list %}
+            <tr>
+              <th scope="row">{{ obj.studentid }}</th>
+              <td>{{ obj.name }}</td>
+              <td>{{ obj.get_gender_display }}</td>
+              <td>{{ obj.age }}</td>
+              <td>{{ obj.faculty }}</td>
+              <td>{{ obj.grade }}</td>
+              <td>
+                <a href="/teacher/student/{{ obj.studentid }}/info/" class="btn btn-primary btn-xs">查看详情</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

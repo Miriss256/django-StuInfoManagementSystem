@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'manager/css/bootstrap.min.css' %}" />
+    <link rel="shortcut icon" href="{% static 'manager/images/index.ico' %}" type="image/x-icon" />
+    <style>
+      body {
+        background-size: cover;
+        background-color: #daf0f98c;
+      }
+      th {
+        text-align: center;
+      }
+    </style>
+    <title>学生信息管理系统</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <br />
+      <div class="panel panel-success" style="margin-top: 3%; height: 720px;">
+        <div class="panel-heading">
+          <h4>教师详情</h4>
+        </div>
+        <div class="panel-body row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-7">
+            <h3 style="">教师姓名: {{ obj.name }}</h3><br />
+            <h4 style="">性别:&emsp13;&emsp13;{{ obj.get_gender_display }}</h4>
+            <h4 style="">年龄:&emsp13;&emsp13; {{ obj.age }}</h4>
+            <h4 style="">院系:&emsp13;&emsp13;<span>{{ obj.faculty }}</span></h4>
+          </div>
+          <div class="col-sm-4">
+            <img src="{% static 'manager/images/tx2.png' %}" style="height: 200px;width: 200px;" alt="" />
+          </div>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <th>教师ID</th>
+                  <td>{{ obj.uid }}</td>
+                  <th>级别</th>
+                  <td>{{ obj.get_level_display }}</td>
+                  <th>入职时间</th>
+                  <td>{{ obj.create_time }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li class="list-group-item">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <th>工资</th>
+                  <td>{{ obj.salary }}</td>
+                  <th>密码</th>
+                  <td>******</td>
+                  <th>手机号</th>
+                  <td>{{ obj.phone_number }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li class="list-group-item">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <th>qq号</th>
+                  <td>未登记</td>
+                  <th>住址</th>
+                  <td>未登记</td>
+                  <th>邮箱</th>
+                  <td>example@email.com</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+        </ul>
+        <div class="row">
+          <div class="col-sm-4" style="text-align: center; margin-top: 40px;">
+            <a href="/teacher/index/" class="btn btn-success" type="button" style="margin-left: 550px;">返 回</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'manager/js/jquery.min.js' %}"></script>
+    <script src="{% static 'manager/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>
