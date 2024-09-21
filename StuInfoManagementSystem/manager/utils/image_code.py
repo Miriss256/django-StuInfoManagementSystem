@@ -26,7 +26,7 @@ def check_code(width=90, height=30, char_length=4):
         """
         return (random.randint(0, 255), random.randint(10, 255), random.randint(64, 255))
  
-    font = ImageFont.truetype('D:\code\department\Monaco.ttf', size=28)
+    font = ImageFont.truetype('/data/www/Monaco.ttf', size=28)
     # 写文字
     for i in range(char_length):
         char = rndChar()
